@@ -1,8 +1,28 @@
 import * as React from 'react';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import Card from './card';
+
+import { styled } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import Avatar from '@mui/material/Avatar';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { borderRadius } from '@mui/system';
+
+import {block} from 'bem-cn';
+import './App.css'
+
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -22,7 +42,10 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <div style={{margin: '10px'}}>
+
+      <Card />
+
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
