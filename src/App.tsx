@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Card from './card';
+import SearchIcon from '@mui/icons-material/Search';
 
 import './App.css'
 
@@ -31,7 +32,14 @@ export default function BasicModal() {
 
       <Card />
 
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button 
+        onClick={handleOpen} 
+        variant="contained" 
+        disableRipple
+        startIcon={<SearchIcon />}
+      >
+        Search
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

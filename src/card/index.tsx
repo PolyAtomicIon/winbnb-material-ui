@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import MUICard from '@mui/material/Card';
@@ -12,6 +10,10 @@ import './card.scss';
 
 const CardContent = styled(MUICardContent)(() => ({
   padding: 0,
+  ":last-child": {
+    paddingBottom: 0
+  },
+  
 }) );
 
 export default function Card() {
@@ -19,9 +21,9 @@ export default function Card() {
   const cnCard = block('card');
 
   return (
-      <MUICard 
-        sx={{ maxWidth: 345, background: 'lightblue', border: 0}} 
+      <MUICard  
         variant="outlined"  
+        sx={{border: 0}}
         className={cnCard()}
       >
         <CardMedia
@@ -39,24 +41,33 @@ export default function Card() {
             className={cnCard('description')}
           >
             <Typography 
-              align="left" 
               color="text.secondary"
               classes={{root: cnCard('type')}}
+              variant="body1"
             >
+              <span 
+                className={cnCard('extra')}
+              >
+                super host
+              </span>
               Stylist apartment in 
             </Typography>
 
             <Typography 
-              align="right"
               classes={{root: cnCard('rating')}}
+              sx={{ fontWeight: 500 }}
             >
-              <StarIcon></StarIcon> 
+              <StarIcon
+                color="primary"
+                fontSize="small"
+              ></StarIcon> 
               4.40
             </Typography>
           </div>  
           
           <Typography 
             classes={{root: cnCard('title')}}
+            variant="body2"
           >
             Stylist apartment in center of the city
           </Typography>

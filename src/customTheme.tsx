@@ -9,11 +9,21 @@ export default createTheme({
     }
   },
   shape: {
-    borderRadius: 24
+    borderRadius: 16
   },
   typography: {
-    button: {
-      fontSize: '1rem',
+    fontFamily: 'Montserrat',
+    body1: {
+      fontSize: 14,
     },
+    body2: {
+      fontSize: 16,
+      fontWeight: 'bold'
+    },
+    button: {
+      fontWeight: 'bold',
+      fontFamily: 'Mulish, Roboto, Helvetica, sans-serif',
+      textTransform: 'capitalize'
+    }
   },
 });
