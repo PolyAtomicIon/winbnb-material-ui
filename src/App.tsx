@@ -8,6 +8,7 @@ import Card from './card';
 import SearchIcon from '@mui/icons-material/Search';
 
 import './App.css'
+import { Grid } from '@mui/material';
 
 
 const style = {
@@ -29,8 +30,26 @@ export default function BasicModal() {
 
   return (
     <div style={{margin: '10px'}}>
-
-      <Card />
+      <Grid 
+        container 
+        spacing={{ xs: 2, md: 3 }} 
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {Array.from(Array(6)).map((_, index) => (
+          <Grid 
+            item 
+            xs={2} 
+            sm={4} 
+            md={4} 
+            key={index}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Card />            
+          </Grid>
+        ))}
+      </Grid>
 
       <Button 
         onClick={handleOpen} 
