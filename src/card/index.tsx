@@ -7,7 +7,6 @@ import CardMedia from '@mui/material/CardMedia';
 import MUICardContent, { CardContentProps } from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import StarIcon from '@mui/icons-material/Star';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import {block} from 'bem-cn';
 
@@ -40,14 +39,14 @@ export default function Card() {
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <Typography 
               align="left" 
-              variant="body1" 
               color="text.secondary"
               classes={{root: cnCard('type')}}
             >
               Stylist apartment in 
             </Typography>
 
-            <Typography align="right" variant="body1" 
+            <Typography 
+              align="right"
               classes={{root: cnCard('rating')}}
             >
               <StarIcon></StarIcon> 
@@ -55,7 +54,7 @@ export default function Card() {
             </Typography>
           </div>  
           
-          <Typography style={{fontWeight: 'bold'}} variant="body1"
+          <Typography 
             classes={{root: cnCard('title')}}
           >
             Stylist apartment in center of the city
