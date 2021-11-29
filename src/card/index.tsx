@@ -5,14 +5,13 @@ import { styled } from '@mui/material/styles';
 import MUICard from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import MUICardContent, { CardContentProps } from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import StarIcon from '@mui/icons-material/Star';
-
 import {block} from 'bem-cn';
+
+import './card.scss';
 
 const CardContent = styled(MUICardContent)(() => ({
   padding: 0,
-  background: 'red',
 }) );
 
 export default function Card() {
@@ -36,7 +35,9 @@ export default function Card() {
         <CardContent
           classes={{root: cnCard('content')}}
         >
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div
+            className={cnCard('description')}
+          >
             <Typography 
               align="left" 
               color="text.secondary"
