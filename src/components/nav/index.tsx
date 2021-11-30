@@ -23,9 +23,9 @@ const LightButton = styled(Button)(() => ({
   height: 55
 }) );
 
-export default function Card(props: any) {
+const cnNav = block('nav');
 
-  const cnNav = block('nav');
+export default function Card(props: any) {
 
   return (
     <nav
@@ -54,16 +54,18 @@ export default function Card(props: any) {
         <LightButton 
           variant="outlined" 
           size="medium"
+          onClick={props.onButtonClick}
         >
           Add guests
         </LightButton>
         <Button 
           variant="outlined"  
           size="medium"
+          onClick={props.onButtonClick}
         >
           <SearchIcon />
         </Button>
       </ButtonGroup>
-      </nav>
+    </nav>
   );
 }
