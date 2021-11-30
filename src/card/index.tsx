@@ -28,11 +28,9 @@ export default function Card() {
       >
         <CardMedia
           component="img"
-          height="267"
-          style={{borderRadius: 24}}
           classes={{root: cnCard('image')}}
           image="https://media-cdn.tripadvisor.com/media/photo-s/1c/1d/b7/92/tweepersoonskamer-met.jpg"
-          alt="Paella dish"
+          alt="room photo"
         />
         <CardContent
           classes={{root: cnCard('content')}}

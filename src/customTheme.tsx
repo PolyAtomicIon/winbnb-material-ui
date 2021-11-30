@@ -6,6 +6,13 @@ export default createTheme({
       main: '#EB5757',
       light: '#F47E7E',
       dark: '#EB5757',
+    },
+    secondary: {
+      main: '#333333',
+      light: '#BDBDBD',
+    },
+    grey: {
+      600: '#BDBDBD',
     }
   },
   shape: {

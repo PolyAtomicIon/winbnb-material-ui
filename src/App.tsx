@@ -4,11 +4,14 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import MUIButtonGroup from '@mui/material/ButtonGroup';
 import Card from './card';
 import SearchIcon from '@mui/icons-material/Search';
 
-import './App.css'
-import { Grid } from '@mui/material';
+import logo from './assets/logo.png'
+
+import './App.scss'
+import { Grid, styled } from '@mui/material';
 
 
 const style = {
@@ -23,13 +26,71 @@ const style = {
   p: 4,
 };
 
+const ButtonGroup = styled(MUIButtonGroup)(() => ({
+  ".MuiButtonGroup-grouped:last-of-type": {
+    border: 0,
+  },
+  ".MuiButtonGroup-grouped:not(:last-of-type)": {
+    border: 0,
+    borderRight: '1px solid #F2F2F2',
+  },
+}) );
+
+const LightButton = styled(Button)(() => ({
+  color: 'grey',
+  fontWeight: 'normal',
+  height: 55
+}) );
+
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
-    <div style={{margin: '10px'}}>
+    <div className="wrapper">
+
+      <nav
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          margin: '32px 0'
+        }}
+      >
+        <img 
+          src={logo} 
+          alt="logo" 
+          height="18"
+        />
+        <ButtonGroup 
+          variant="contained"
+          size="large"
+        >
+          <Button 
+            variant="outlined" 
+            color="secondary"
+            size="large"
+            sx={{
+              fontWeight: 'normal'
+            }}
+          >
+            Helsinki
+          </Button>
+          <LightButton 
+            variant="outlined" 
+            size="medium"
+          >
+            Add guests
+          </LightButton>
+          <Button 
+            variant="outlined"  
+            size="medium"
+          >
+            <SearchIcon />
+          </Button>
+        </ButtonGroup>
+      </nav>
       <Grid 
         container 
         spacing={{ xs: 2, md: 3 }} 
@@ -38,7 +99,7 @@ export default function BasicModal() {
         {Array.from(Array(6)).map((_, index) => (
           <Grid 
             item 
-            xs={2} 
+            xs={4} 
             sm={4} 
             md={4} 
             key={index}
