@@ -7,7 +7,6 @@ import logo from '../../assets/logo.png'
 
 import './nav.scss';
 
-
 const ButtonGroup = styled(MUIButtonGroup)(() => ({
   ".MuiButtonGroup-grouped:last-of-type": {
     border: 0,
@@ -26,49 +25,45 @@ const LightButton = styled(Button)(() => ({
 
 export default function Card(props: any) {
 
-  const cnCard = block('card');
+  const cnNav = block('nav');
 
   return (
     <nav
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          margin: '32px 0'
-        }}
+      className={cnNav()}
+    >
+      <img 
+        src={logo} 
+        alt="logo" 
+        className={cnNav('logo')}
+      />
+      <ButtonGroup 
+        variant="contained"
+        size="large"
+        classes={{root: cnNav('control')}}
       >
-        <img 
-          src={logo} 
-          alt="logo" 
-          height="18"
-        />
-        <ButtonGroup 
-          variant="contained"
-          size="large"
+        <Button 
+          variant="outlined" 
+          color="secondary"
+          sx={{
+            fontWeight: 'normal'
+          }}
+          onClick={props.onButtonClick}
         >
-          <Button 
-            variant="outlined" 
-            color="secondary"
-            sx={{
-              fontWeight: 'normal'
-            }}
-            onClick={props.onButtonClick}
-          >
-            Helsinki
-          </Button>
-          <LightButton 
-            variant="outlined" 
-            size="medium"
-          >
-            Add guests
-          </LightButton>
-          <Button 
-            variant="outlined"  
-            size="medium"
-          >
-            <SearchIcon />
-          </Button>
-        </ButtonGroup>
+          Helsinki
+        </Button>
+        <LightButton 
+          variant="outlined" 
+          size="medium"
+        >
+          Add guests
+        </LightButton>
+        <Button 
+          variant="outlined"  
+          size="medium"
+        >
+          <SearchIcon />
+        </Button>
+      </ButtonGroup>
       </nav>
   );
 }

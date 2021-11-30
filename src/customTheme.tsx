@@ -20,6 +20,13 @@ export default createTheme({
   },
   typography: {
     fontFamily: 'Montserrat',
+    h1: {
+      fontSize: 24,
+      fontWeight: 'bold'
+    },
+    h3: {
+      fontSize: 14,
+    },  
     body1: {
       fontSize: 14,
     },

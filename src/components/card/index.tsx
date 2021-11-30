@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import MUICard from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import MUICardContent, { CardContentProps } from '@mui/material/CardContent';
+import MUICardContent from '@mui/material/CardContent';
 import StarIcon from '@mui/icons-material/Star';
 import {block} from 'bem-cn';
 

@@ -32,12 +32,25 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="wrapper">
+    <main className="wrapper">
 
       <Nav
         onButtonClick={handleOpen}
       ></Nav>
       
+      <div className="header">
+        <Typography
+          variant="h1"
+        >
+          Stays in Finland
+        </Typography>
+        <Typography
+          variant="h3"
+        >
+          12+ stays
+        </Typography>
+      </div>
+
       <Grid 
         container 
         spacing={{ xs: 2, md: 3 }} 
@@ -59,14 +72,6 @@ export default function BasicModal() {
         ))}
       </Grid>
 
-      <Button 
-        onClick={handleOpen} 
-        variant="contained" 
-        disableRipple
-        startIcon={<SearchIcon />}
-      >
-        Search
-      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -80,8 +85,23 @@ export default function BasicModal() {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
+          <Button 
+            onClick={handleOpen} 
+            variant="contained" 
+            startIcon={<SearchIcon />}
+          >
+            Search
+          </Button>
         </Box>
       </Modal>
-    </div>
+
+      <footer className="footer">
+        <Typography textAlign="center" color="grey">
+          created by 
+          <Box sx={{ fontWeight: 'bold', display: 'inline' }}> @2powerofn </Box>
+          - devChallenges.io
+        </Typography>
+      </footer>
+    </main>
   );
 }
