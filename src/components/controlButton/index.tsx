@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef, FC } from 'react';
+import { useContext, useEffect, useRef, FC } from 'react';
 import block from 'bem-cn';
 import './controlButton.scss';
 import { Typography } from '@mui/material';
@@ -18,8 +18,8 @@ export const ControlButton: FC<ControlButtonProps> = ({
     value
 }) => {
 
-  const controlRef = useRef<HTMLButtonElement>(null);
   const cnButton = block('control-button');
+  const controlRef = useRef<HTMLButtonElement>(null);
   const {activeControl, setActiveControl}:IActiveControlContext = useContext(ActiveControlContext);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ export const ControlButton: FC<ControlButtonProps> = ({
         className={cnButton()}
         ref={controlRef}
         onClick={() => setActiveControl(type)}
+        onFocus={() => setActiveControl(type)}
     >
         <Typography 
             classes={{root: cnButton('label')}}

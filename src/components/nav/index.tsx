@@ -61,7 +61,6 @@ export default function Card(props: any) {
         <Button 
           variant="outlined"  
           size="medium"
-          onClick={() => props.onButtonClick('location')}
         >
           <SearchIcon />
         </Button>

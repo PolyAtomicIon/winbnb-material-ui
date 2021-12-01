@@ -1,12 +1,11 @@
 import {block} from 'bem-cn';
 import SearchIcon from '@mui/icons-material/Search';
-import { Modal as MUIModal, TextField, Button, useTheme, SelectChangeEvent, Theme, Stack, Divider } from '@mui/material';
+import { Modal as MUIModal, Button, Stack } from '@mui/material';
 import './modal.scss';
-import { useState, useContext, useEffect, useRef, FC } from 'react';
+import {FC } from 'react';
 import CustomSelect from '../select';
-import {ControlButton, ControlButtonProps} from '../controlButton';
+import {ControlButton} from '../controlButton';
 import { ActiveControlContext } from "../../context/ActiveControlContext";
-import React from 'react';
 
 
 interface ModalProps {
@@ -26,8 +25,6 @@ export const Modal: FC<ModalProps> = ({
 }) => {
 
   const cnModal = block('modal');
-
-  const handleChange = () => {}
 
   return (
     <ActiveControlContext.Consumer>
