@@ -6,6 +6,9 @@ import {block} from 'bem-cn';
 import logo from '../../assets/logo.png'
 
 import './nav.scss';
+import { GuestsContext, IGuestsContext } from '../../context/GuestsContext';
+import { useContext } from 'react';
+import { ILocationContext, LocationContext } from '../../context/LocationContext';
 
 const ButtonGroup = styled(MUIButtonGroup)(() => ({
   ".MuiButtonGroup-grouped:last-of-type": {
@@ -26,6 +29,10 @@ const LightButton = styled(Button)(() => ({
 const cnNav = block('nav');
 
 export default function Card(props: any) {
+
+  const {location}:ILocationContext = useContext(LocationContext);
+  const {adultGuests, childGuests}:IGuestsContext = useContext(GuestsContext);
+  const guests = adultGuests + childGuests;
 
   return (
     <nav
@@ -49,14 +56,14 @@ export default function Card(props: any) {
           }}
           onClick={() => props.onButtonClick('location')}
         >
-          Helsinki
+          {location ? location : 'Add location'}
         </Button>
         <LightButton 
           variant="outlined" 
           size="medium"
           onClick={() => props.onButtonClick('guests')}
         >
-          Add guests
+          {guests ? guests : 'Add Guests'}
         </LightButton>
         <Button 
           variant="outlined"  

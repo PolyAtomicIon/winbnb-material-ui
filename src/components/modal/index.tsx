@@ -6,7 +6,8 @@ import {FC } from 'react';
 import CustomSelect from '../select';
 import {ControlButton} from '../controlButton';
 import { ActiveControlContext } from "../../context/ActiveControlContext";
-
+import { LocationContext } from "../../context/LocationContext";
+import { GuestsContext } from "../../context/GuestsContext";
 
 interface ModalProps {
   className?: string,
@@ -28,58 +29,68 @@ export const Modal: FC<ModalProps> = ({
 
   return (
     <ActiveControlContext.Consumer>
-      {context => (
-        <MUIModal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          sx={{
-          }}
-        >
-          <div
-            className={cnModal()}
-          >
-            <Stack 
-              direction={{ xs: 'column', sm: 'row', md: 'row' }}
-              className={cnModal('controls')}
-            >
-              <div className={cnModal('item')}>   
-                <ControlButton
-                  type='location'
-                  label="Location"
-                  placeholder="Add location"
-                /> 
-              </div>
-              
-              <div className={cnModal('item')}>   
-                <ControlButton
-                  type='guests'
-                  label="Guests"
-                  placeholder="Add guest"
-                /> 
-              </div>
-
-              <div className={cnModal('item', { mod: 'hideable' })}>   
-                <Button 
-                  onClick={handleOpen} 
-                  variant="contained" 
-                  size="large"
-                  startIcon={<SearchIcon />}
+      {activeControlContext => (
+        <LocationContext.Consumer>
+          {locationContext => (
+          <GuestsContext.Consumer>
+            {guestsContext => (
+              <MUIModal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                sx={{
+                }}
+              >
+                <div
+                  className={cnModal()}
                 >
-                  Search
-                </Button>
-              </div>
-            </Stack>
+                  <Stack 
+                    direction={{ xs: 'column', sm: 'row', md: 'row' }}
+                    className={cnModal('controls')}
+                  >
+                    <div className={cnModal('item')}>   
+                      <ControlButton
+                        type='location'
+                        label="Location"
+                        placeholder="Add location"
+                      /> 
+                    </div>
+                    
+                    <div className={cnModal('item')}>   
+                      <ControlButton
+                        type='guests'
+                        label="Guests"
+                        placeholder="Add guest"
+                      /> 
+                    </div>
 
-            { 
-              context.activeControl == 'location' 
-                ? <div className={cnModal('location-control')}>location</div> 
-                : <div className={cnModal('guests-control')}>guests</div>
-            }
-          </div>
-          
-        </MUIModal>
+                    <div className={cnModal('item', { mod: 'hideable' })}>   
+                      <Button 
+                        onClick={handleOpen} 
+                        variant="contained" 
+                        size="large"
+                        startIcon={<SearchIcon />}
+                      >
+                        Search
+                      </Button>
+                    </div>
+                  </Stack>
+
+                  { 
+                    activeControlContext.activeControl == 'location' 
+                      ? <div className={cnModal('location-control')}>
+                          <CustomSelect></CustomSelect>
+                        </div> 
+                      : <div className={cnModal('guests-control')}>guests</div>
+                  }
+                </div>
+                
+              </MUIModal>
+              )}
+          </GuestsContext.Consumer>
+          )}
+        </LocationContext.Consumer>
       )}
     </ActiveControlContext.Consumer>
   );

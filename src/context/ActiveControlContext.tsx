@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, createContext } from "react";
 
 export interface IActiveControlContext {
   activeControl: string;
@@ -10,4 +10,4 @@ const defaultState = {
   setActiveControl: () => {}
 };
   
-export const ActiveControlContext = React.createContext<IActiveControlContext>(defaultState);
+export const ActiveControlContext = createContext<IActiveControlContext>(defaultState);

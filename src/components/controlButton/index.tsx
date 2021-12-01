@@ -3,24 +3,29 @@ import block from 'bem-cn';
 import './controlButton.scss';
 import { Typography } from '@mui/material';
 import { IActiveControlContext, ActiveControlContext } from '../../context/ActiveControlContext';
+import { ILocationContext, LocationContext } from '../../context/LocationContext';
+import { GuestsContext, IGuestsContext } from '../../context/GuestsContext';
 
 export interface ControlButtonProps {
     type: 'location' | 'guests',
     label?: string,
     placeholder?: string,
-    value?: string,
 };
 
 export const ControlButton: FC<ControlButtonProps> = ({
     type,
     label, 
     placeholder, 
-    value
 }) => {
 
   const cnButton = block('control-button');
   const controlRef = useRef<HTMLButtonElement>(null);
   const {activeControl, setActiveControl}:IActiveControlContext = useContext(ActiveControlContext);
+
+  const {location}:ILocationContext = useContext(LocationContext);
+  const {adultGuests, childGuests}:IGuestsContext = useContext(GuestsContext);
+
+  const value = type === 'location' ? location : adultGuests + childGuests;
 
   useEffect(() => {
     if( type == activeControl )
