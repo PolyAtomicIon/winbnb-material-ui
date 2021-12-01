@@ -3,6 +3,14 @@
     box-sizing: border-box;
     background-color: transparent;
     height: 100%;
-    border: 0;
+    border: 2px solid transparent;
+    border-radius: 16px;
     padding: 12px 27px;
+    &:hover {
+        border-color: $secondary;
+    }
+    &:active,
+    &:focus {
+        border-color: $black;
+    }
 }
