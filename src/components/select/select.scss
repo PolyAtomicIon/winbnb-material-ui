@@ -1,8 +1,10 @@
 @import '../../customThemeVariables.scss';
 .select {
     box-sizing: border-box;
-    // display: flex;
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     &__item {
         gap: 10px;
     }

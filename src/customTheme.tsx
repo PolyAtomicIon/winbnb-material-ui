@@ -11,6 +11,9 @@ export default createTheme({
       main: '#333333',
       light: '#BDBDBD',
     },
+    info: {
+      main: '#4F4F4F'
+    },
     grey: {
       600: '#BDBDBD',
     }

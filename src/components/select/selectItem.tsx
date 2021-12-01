@@ -18,10 +18,15 @@ export const SelectItem: FC<SelectItemProps> = ({
   return (
     <MenuItem 
       classes={{root: className}}
+      sx={{
+        borderRadius: 14
+      }}
       value={value}
       onClick={() => setLocation(value)}
     > 
-      <LocationIcon />
+      <LocationIcon 
+        color="info"
+      />
       <Typography 
         variant="body1"
       >
