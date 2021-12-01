@@ -29,15 +29,6 @@ export const Modal: FC<ModalProps> = ({
 
   const handleChange = () => {}
 
-  const locationControl = useRef<HTMLButtonElement>(null);
-  const guestsControl = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    console.log('location control')
-    console.log(locationControl)
-    locationControl?.current?.focus();
-})
-
   return (
     <ActiveControlContext.Consumer>
       {context => (
