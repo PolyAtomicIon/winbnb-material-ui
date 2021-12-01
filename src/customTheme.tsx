@@ -27,6 +27,12 @@ export default createTheme({
     h3: {
       fontSize: 14,
     },  
+    subtitle1: {
+      fontSize: 9,
+      fontWeight: 800,
+      fontFamily: 'Mulish, Roboto, Helvetica, sans-serif',
+      textTransform: 'uppercase'
+    },
     body1: {
       fontSize: 14,
     },

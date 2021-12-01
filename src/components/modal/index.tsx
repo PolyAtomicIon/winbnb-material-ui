@@ -1,59 +1,16 @@
 import {block} from 'bem-cn';
 import SearchIcon from '@mui/icons-material/Search';
-import { Modal as MUIModal, Box, FormControl, Select, OutlinedInput, MenuItem, TextField, Button, useTheme, SelectChangeEvent, Theme, Stack, Divider } from '@mui/material';
+import { Modal as MUIModal, TextField, Button, useTheme, SelectChangeEvent, Theme, Stack, Divider } from '@mui/material';
 import './modal.scss';
 import { useState } from 'react';
 import CustomSelect from '../select';
+import ControlButton from '../controlButton';
 
 export default function Modal(props: any) {
 
   const cnModal = block('modal');
 
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-  };
-
-  const names = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-  ];
-
-  function getStyles(name: string, personName: readonly string[], theme: Theme) {
-    return {
-      fontWeight:
-        personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
-
-  const theme = useTheme();
-  const [personName, setPersonName] = useState<string[]>([]);
-
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a the stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
-  }
+  const handleChange = () => {}
 
   return (
     <MUIModal
@@ -68,48 +25,12 @@ export default function Modal(props: any) {
         className={cnModal()}
       >
         <Stack 
-          direction="row" 
-          // spacing={2}
-          // divider={<Divider orientation="vertical"  />}
+          direction={{ xs: 'column', sm: 'row', md: 'row' }}
           className={cnModal('controls')}
         >
           <div className={cnModal('item')}>   
-            {/* <FormControl
-              sx={{
-                border: 0
-              }}
-            >
-              <Select
-                multiple
-                displayEmpty
-                value={personName}
-                onChange={handleChange}
-                input={<OutlinedInput />}
-                renderValue={(selected) => {
-                  if (selected.length === 0) {
-                    return <em>Placeholder</em>;
-                  }
-
-                  return selected.join(', ');
-                }}
-                MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
-              >
-                <MenuItem disabled value="">
-                  <em>Placeholder</em>
-                </MenuItem>
-                {names.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                    style={getStyles(name, personName, theme)}
-                  >
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl> */}
-            <CustomSelect></CustomSelect>
+            <ControlButton/> 
+            {/* <CustomSelect></CustomSelect> */}
           </div>
           
           <div className={cnModal('item')}>   
@@ -119,7 +40,7 @@ export default function Modal(props: any) {
             />
           </div>
 
-          <div className={cnModal('item')}>   
+          <div className={cnModal('item', { mod: 'hideable' })}>   
             <Button 
               onClick={props.handleOpen} 
               variant="contained" 
@@ -130,6 +51,9 @@ export default function Modal(props: any) {
             </Button>
           </div>
         </Stack>
+
+        <div className={cnModal('location-control')}>location</div>
+        <div className={cnModal('guests-control')}>guests</div>
       </div>
       
     </MUIModal>

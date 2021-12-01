@@ -1,0 +1,12 @@
+@import '../../customThemeVariables.scss';
+.select {
+    box-sizing: border-box;
+    // display: flex;
+    padding: 0;
+    &__button {
+        height: 100%;
+    }
+    &__input {
+        visibility: hidden;
+    }
+}
