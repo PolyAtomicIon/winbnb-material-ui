@@ -3,7 +3,7 @@ import block from 'bem-cn';
 import './controlButton.scss';
 import { Typography } from '@mui/material';
 
-export default function ControlButton() {
+export default function ControlButton({label, placeholder, value}: any) {
 
   const cnButton = block('control-button');
 
@@ -16,25 +16,26 @@ export default function ControlButton() {
             textAlign="left"
             variant="subtitle1"
         >
-            Location
+            {label}
         </Typography> 
-        
-        {/* <Typography 
-            color="text.secondary"
-            classes={{root: cnButton('value')}}
-            textAlign="left"
-            variant="body1"
-        >
-            Add location
-        </Typography> */}
-
-        <Typography 
-            classes={{root: cnButton('value')}}
-            textAlign="left"
-            variant="body1"
-        >
-            Helsinki, Finland
-        </Typography>
+       
+        {value
+            ?   <Typography 
+                    classes={{root: cnButton('value')}}
+                    textAlign="left"
+                    variant="body1"
+                >
+                    {value}
+                </Typography>
+            :   <Typography 
+                    classes={{root: cnButton('value')}}
+                    color="text.secondary"
+                    textAlign="left"
+                    variant="body1"
+                >
+                    {placeholder}
+                </Typography>
+        }
         
     </button>
   );

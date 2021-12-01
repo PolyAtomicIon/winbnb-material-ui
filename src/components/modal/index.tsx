@@ -29,15 +29,17 @@ export default function Modal(props: any) {
           className={cnModal('controls')}
         >
           <div className={cnModal('item')}>   
-            <ControlButton/> 
-            {/* <CustomSelect></CustomSelect> */}
+            <ControlButton
+              label="Location"
+              placeholder="Add location"
+            /> 
           </div>
           
           <div className={cnModal('item')}>   
-            <TextField 
+            <ControlButton
               label="Guests"
               placeholder="Add guest"
-            />
+            /> 
           </div>
 
           <div className={cnModal('item', { mod: 'hideable' })}>   
