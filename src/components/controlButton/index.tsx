@@ -1,16 +1,37 @@
-import * as React from 'react';
+import { useState, useContext, useEffect, useRef, FC } from 'react';
 import block from 'bem-cn';
 import './controlButton.scss';
 import { Typography } from '@mui/material';
+import { IActiveControlContext, ActiveControlContext } from '../../context/ActiveControlContext';
 
-export default function ControlButton({label, placeholder, value, Ref}: any) {
+export interface ControlButtonProps {
+    type: 'location' | 'guests',
+    label?: string,
+    placeholder?: string,
+    value?: string,
+};
 
+export const ControlButton: FC<ControlButtonProps> = ({
+    type,
+    label, 
+    placeholder, 
+    value
+}) => {
+
+  const controlRef = useRef<HTMLButtonElement>(null);
   const cnButton = block('control-button');
+  const {activeControl, setActiveControl}:IActiveControlContext = useContext(ActiveControlContext);
+
+  useEffect(() => {
+    if( type == activeControl )
+        controlRef?.current?.focus();
+  })
 
   return (
     <button 
         className={cnButton()}
-        ref={Ref}
+        ref={controlRef}
+        onClick={() => setActiveControl(type)}
     >
         <Typography 
             classes={{root: cnButton('label')}}

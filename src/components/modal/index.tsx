@@ -2,10 +2,11 @@ import {block} from 'bem-cn';
 import SearchIcon from '@mui/icons-material/Search';
 import { Modal as MUIModal, TextField, Button, useTheme, SelectChangeEvent, Theme, Stack, Divider } from '@mui/material';
 import './modal.scss';
-import { useState, useContext, useEffect, useRef } from 'react';
+import { useState, useContext, useEffect, useRef, FC } from 'react';
 import CustomSelect from '../select';
-import ControlButton from '../controlButton';
+import {ControlButton, ControlButtonProps} from '../controlButton';
 import { ActiveControlContext } from "../../context/ActiveControlContext";
+import React from 'react';
 
 
 interface ModalProps {
@@ -15,7 +16,7 @@ interface ModalProps {
   handleClose?: () => void  
 };
 
-export const Modal: React.FC<ModalProps> = ({
+export const Modal: FC<ModalProps> = ({
   children,
   className,
   open,
@@ -28,8 +29,8 @@ export const Modal: React.FC<ModalProps> = ({
 
   const handleChange = () => {}
 
-  const locationControl = useRef<HTMLInputElement>(null);
-  const guestsControl = useRef<HTMLInputElement>(null);
+  const locationControl = useRef<HTMLButtonElement>(null);
+  const guestsControl = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     console.log('location control')
@@ -57,7 +58,7 @@ export const Modal: React.FC<ModalProps> = ({
             >
               <div className={cnModal('item')}>   
                 <ControlButton
-                  Ref={locationControl}
+                  type='location'
                   label="Location"
                   placeholder="Add location"
                 /> 
@@ -65,7 +66,7 @@ export const Modal: React.FC<ModalProps> = ({
               
               <div className={cnModal('item')}>   
                 <ControlButton
-                  ref={guestsControl}
+                  type='guests'
                   label="Guests"
                   placeholder="Add guest"
                 /> 

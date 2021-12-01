@@ -1,12 +1,13 @@
 import React, { Dispatch, SetStateAction } from "react";
 
-interface IActiveControlContext {
+export interface IActiveControlContext {
     activeControl: string;
-    setActiveControl?: Dispatch<SetStateAction<string>>;
+    setActiveControl: Dispatch<SetStateAction<string>>;
   }
   
   const defaultState = {
-    activeControl: 'location'
+    activeControl: 'location',
+    setActiveControl: () => {}
   };
   
   
