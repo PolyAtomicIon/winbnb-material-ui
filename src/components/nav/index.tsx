@@ -47,21 +47,21 @@ export default function Card(props: any) {
           sx={{
             fontWeight: 'normal'
           }}
-          onClick={props.onButtonClick}
+          onClick={() => props.onButtonClick('location')}
         >
           Helsinki
         </Button>
         <LightButton 
           variant="outlined" 
           size="medium"
-          onClick={props.onButtonClick}
+          onClick={() => props.onButtonClick('guests')}
         >
           Add guests
         </LightButton>
         <Button 
           variant="outlined"  
           size="medium"
-          onClick={props.onButtonClick}
+          onClick={() => props.onButtonClick('location')}
         >
           <SearchIcon />
         </Button>
