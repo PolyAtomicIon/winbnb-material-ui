@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { ActiveControlContext } from './context/ActiveControlContext';
 import { LocationContext, ILocationContext } from "./context/LocationContext";
 import { GuestsContext } from "./context/GuestsContext";
+import hotelsData from './assets/stays.json';
 
 import './App.scss'
 
@@ -56,7 +57,7 @@ export default function App() {
             spacing={{ xs: 2, md: 3 }} 
             columns={{ xs: 4, sm: 8, md: 12 }}
           >
-            {Array.from(Array(6)).map((_, index) => (
+            {hotelsData.map((hotel, index) => (
               <Grid 
                 item 
                 xs={4} 
@@ -65,9 +66,10 @@ export default function App() {
                 key={index}
                 display="flex"
                 justifyContent="center"
-                alignItems="center"
               >
-                <Card />            
+                <Card 
+                  hotel={hotel}
+                />            
               </Grid>
             ))}
           </Grid>

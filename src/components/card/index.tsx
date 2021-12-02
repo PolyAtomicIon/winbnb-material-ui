@@ -13,23 +13,34 @@ const CardContent = styled(MUICardContent)(() => ({
   ":last-child": {
     paddingBottom: 0
   },
-  
 }) );
 
-export default function Card() {
+export default function Card({hotel}:any) {
 
   const cnCard = block('card');
+
+  const beds =  (
+                  hotel?.beds 
+                    ? '. ' + hotel?.beds + (hotel.beds == 1 ? ' bed' : ' beds')
+                    : ''
+                );
+  const roomType = hotel?.type + beds;
+
+  const maxTitleLength = 48;
+  const shortTitle = hotel.title.length > maxTitleLength ? hotel.title.substring(0, maxTitleLength) + "..." : hotel.title;
 
   return (
       <MUICard  
         variant="outlined"  
-        sx={{border: 0}}
+        sx={{
+          border: 0, 
+        }}
         className={cnCard()}
       >
         <CardMedia
           component="img"
           classes={{root: cnCard('image')}}
-          image="https://media-cdn.tripadvisor.com/media/photo-s/1c/1d/b7/92/tweepersoonskamer-met.jpg"
+          src={hotel.photo}
           alt="room photo"
         />
         <CardContent
@@ -43,12 +54,17 @@ export default function Card() {
               classes={{root: cnCard('type')}}
               variant="body1"
             >
-              <span 
-                className={cnCard('extra')}
-              >
-                super host
+              {
+                hotel.superHost &&
+                  <span 
+                    className={cnCard('super-host')}
+                  >
+                    super host
+                  </span>
+              }
+              <span className={cnCard('room-type')}>
+                {roomType}
               </span>
-              Stylist apartment in 
             </Typography>
 
             <Typography 
@@ -59,7 +75,7 @@ export default function Card() {
                 color="primary"
                 fontSize="small"
               ></StarIcon> 
-              4.40
+              {hotel.rating}
             </Typography>
           </div>  
           
@@ -67,7 +83,7 @@ export default function Card() {
             classes={{root: cnCard('title')}}
             variant="body2"
           >
-            Stylist apartment in center of the city
+            {shortTitle}
           </Typography>
         </CardContent>
       </MUICard>
