@@ -9,6 +9,7 @@
     box-sizing: border-box;
     @media screen and (max-width: $mobile) {
         padding: 12px;
+        height: 80vh;
     }
     &__controls {
         position: relative;
@@ -41,5 +42,15 @@
     }
     &__location-control {
         height: 250px;
+    }
+    &__search-button {
+        display: none;
+        @media screen and (max-width: $mobile) {
+            position: absolute;
+            bottom: 12px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
     }
 }

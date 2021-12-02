@@ -87,6 +87,16 @@ export const Modal: FC<ModalProps> = ({
                           <GuestController />
                       </div>
                   }
+                  <div className={cnModal('search-button')}>   
+                    <Button 
+                      onClick={handleOpen} 
+                      variant="contained" 
+                      size="large"
+                      startIcon={<SearchIcon />}
+                    >
+                      Search
+                    </Button>
+                  </div>
                 </div>
                 
               </MUIModal>
