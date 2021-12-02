@@ -1,0 +1,14 @@
+@import '../../customThemeVariables.scss';
+.select {
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @media screen and (max-width: $mobile) {
+        padding: 12px;
+    }
+    &__item {
+        gap: 10px;
+    }
+}
