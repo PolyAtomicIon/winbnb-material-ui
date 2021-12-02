@@ -39,40 +39,45 @@ export default function App() {
             onButtonClick={handleOpen}
           ></Nav>
           
-          <div className="header">
-            <Typography
-              variant="h1"
-            >
-              Stays in Finland
-            </Typography>
-            <Typography
-              variant="h3"
-            >
-              12+ stays
-            </Typography>
-          </div>
+          {
+            location &&
+              <>
+                <div className="header">
+                  <Typography
+                    variant="h1"
+                  >
+                    Stays in {location}
+                  </Typography>
+                  <Typography
+                    variant="h3"
+                  >
+                    {hotelsData.length + '+ stays'}
+                  </Typography>
+                </div>
 
-          <Grid 
-            container 
-            spacing={{ xs: 2, md: 3 }} 
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          >
-            {hotelsData.map((hotel, index) => (
-              <Grid 
-                item 
-                xs={4} 
-                sm={4} 
-                md={4} 
-                key={index}
-                display="flex"
-                justifyContent="center"
-              >
-                <Card 
-                  hotel={hotel}
-                />            
-              </Grid>
-            ))}
-          </Grid>
+                <Grid 
+                  container 
+                  spacing={{ xs: 2, md: 3 }} 
+                  columns={{ xs: 4, sm: 8, md: 12 }}
+                >
+                  {hotelsData.map((hotel, index) => (
+                    <Grid 
+                      item 
+                      xs={4} 
+                      sm={4} 
+                      md={4} 
+                      key={index}
+                      display="flex"
+                      justifyContent="center"
+                    >
+                      <Card 
+                        hotel={hotel}
+                      />            
+                    </Grid>
+                  ))}
+                </Grid>
+              </>
+          }
 
           <Modal
             open={open}
