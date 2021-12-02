@@ -1,4 +1,4 @@
-import { useContext, FC } from 'react';
+import { useContext, FC, Dispatch, SetStateAction } from 'react';
 import LocationIcon from '@mui/icons-material/LocationOn';
 import { SelectChangeEvent, Typography, MenuItem } from '@mui/material';
 import { ILocationContext, LocationContext } from '../../context/LocationContext';
@@ -9,13 +9,15 @@ interface CounterProps {
   label?: string,
   description?: string,
   value: number,
+  onClickFunction: Dispatch<SetStateAction<number>>
 };
 
 export const Counter: FC<CounterProps> = ({
   className,
   value,
   label,
-  description
+  description,
+  onClickFunction
 }) => {
 
   // const {location, setLocation}:ILocationContext = useContext(LocationContext);
@@ -29,9 +31,6 @@ export const Counter: FC<CounterProps> = ({
           classes={{root: cnCounter('label')}}
           textAlign="left"
           variant="h2"
-          // sx={{
-          //   fontWeight: "bold"
-          // }}
       >
           {label}
       </Typography> 
@@ -49,13 +48,14 @@ export const Counter: FC<CounterProps> = ({
       >
         <button
           className={cnCounter('button')}
-          // onClick={}
+          onClick={() => onClickFunction(value - 1)}
         >
           -
         </button>
         {value}
         <button
           className={cnCounter('button')}
+          onClick={() => onClickFunction(value + 1)}
         >
           +
         </button>

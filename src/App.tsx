@@ -16,7 +16,9 @@ export default function App() {
 
   const [activeControl, setActiveControl] = useState('location');
   const [location, setLocation] = useState('');
-  // const [guests, setGuests] = useState('location');
+
+  const [adultGuests, setAdultGuests] = useState(0);
+  const [childGuests, setChildGuests] = useState(0);
 
   const [open, setOpen] = useState(false);
   const handleOpen = (controlType:string = 'location') => {
@@ -29,7 +31,7 @@ export default function App() {
 
     <ActiveControlContext.Provider value={{activeControl, setActiveControl}}>
       <LocationContext.Provider value={{location, setLocation}}>
-      {/* <GuestsContext.Provider value={{activeControl, setActiveControl}}> */}
+      <GuestsContext.Provider value={{adultGuests, childGuests, setAdultGuests, setChildGuests}}>
         <main className="wrapper">
 
           <Nav
@@ -84,6 +86,7 @@ export default function App() {
             </Typography>
           </footer>
         </main>
+        </GuestsContext.Provider>
       </LocationContext.Provider>        
     </ActiveControlContext.Provider>
   );
