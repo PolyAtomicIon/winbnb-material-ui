@@ -32,6 +32,10 @@
             &:focus {
                 border-color: $primary;
             }
+            &:disabled {
+                background-color: $secondary-light;
+                opacity: 0.4;
+            }
         }
     }
 }

@@ -53,7 +53,7 @@ export const ControlButton: FC<ControlButtonProps> = ({
                     textAlign="left"
                     variant="body1"
                 >
-                    {value}
+                    {value + ' guests'}
                 </Typography>
             :   <Typography 
                     classes={{root: cnButton('placeholder')}}

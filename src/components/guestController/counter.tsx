@@ -48,6 +48,7 @@ export const Counter: FC<CounterProps> = ({
       >
         <button
           className={cnCounter('button')}
+          disabled={value == 0}
           onClick={() => onClickFunction(value - 1)}
         >
           -
