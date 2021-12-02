@@ -8,6 +8,7 @@ import {ControlButton} from '../controlButton';
 import { ActiveControlContext } from "../../context/ActiveControlContext";
 import { LocationContext } from "../../context/LocationContext";
 import { GuestsContext } from "../../context/GuestsContext";
+import GuestController from '../guestController';
 
 interface ModalProps {
   className?: string,
@@ -82,7 +83,9 @@ export const Modal: FC<ModalProps> = ({
                       ? <div className={cnModal('location-control')}>
                           <CustomSelect></CustomSelect>
                         </div> 
-                      : <div className={cnModal('guests-control')}>guests</div>
+                      : <div className={cnModal('guests-control')}>
+                          <GuestController />
+                      </div>
                   }
                 </div>
                 
@@ -94,8 +97,4 @@ export const Modal: FC<ModalProps> = ({
       )}
     </ActiveControlContext.Consumer>
   );
-}
-
-function componentDidMount() {
-  throw new Error('Function not implemented.');
 }
