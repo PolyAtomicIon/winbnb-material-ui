@@ -42,6 +42,7 @@
     }
     &__location-control {
         height: 250px;
+        overflow-y: scroll;
     }
     &__search-button {
         display: none;

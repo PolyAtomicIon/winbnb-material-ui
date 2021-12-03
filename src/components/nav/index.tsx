@@ -28,7 +28,7 @@ const LightButton = styled(Button)(() => ({
 
 const cnNav = block('nav');
 
-export default function Card(props: any) {
+export default function Nav(props: any) {
 
   const {location}:ILocationContext = useContext(LocationContext);
   const {adultGuests, childGuests}:IGuestsContext = useContext(GuestsContext);
@@ -83,7 +83,8 @@ export default function Card(props: any) {
         <Button 
           variant="outlined"  
           size="medium"
-        >
+          onClick={() => props.searchStays()}
+          >
           <SearchIcon />
         </Button>
       </ButtonGroup>

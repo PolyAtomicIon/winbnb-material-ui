@@ -9,13 +9,18 @@ import { ActiveControlContext } from "../../context/ActiveControlContext";
 import { LocationContext } from "../../context/LocationContext";
 import { GuestsContext } from "../../context/GuestsContext";
 import GuestController from '../guestController';
+import staysData from '../../assets/stays.json';
 
 interface ModalProps {
   className?: string,
   open: boolean,
   handleOpen?: () => void,
-  handleClose?: () => void  
+  handleClose?: () => void, 
+  searchStays?: () => void 
 };
+
+let places = staysData.map((stay) => (stay.country + ', ' + stay.city))
+places = Array.from(new Set(places));
 
 export const Modal: FC<ModalProps> = ({
   children,
@@ -23,6 +28,7 @@ export const Modal: FC<ModalProps> = ({
   open,
   handleOpen,
   handleClose,
+  searchStays,
   ...props 
 }) => {
 
@@ -68,7 +74,7 @@ export const Modal: FC<ModalProps> = ({
 
                     <div className={cnModal('item', { mod: 'hideable' })}>   
                       <Button 
-                        onClick={handleOpen} 
+                        onClick={searchStays} 
                         variant="contained" 
                         size="large"
                         startIcon={<SearchIcon />}
@@ -81,7 +87,9 @@ export const Modal: FC<ModalProps> = ({
                   { 
                     activeControlContext.activeControl == 'location' 
                       ? <div className={cnModal('location-control')}>
-                          <CustomSelect></CustomSelect>
+                          <CustomSelect
+                            items={places}
+                          ></CustomSelect>
                         </div> 
                       : <div className={cnModal('guests-control')}>
                           <GuestController />
@@ -89,7 +97,7 @@ export const Modal: FC<ModalProps> = ({
                   }
                   <div className={cnModal('search-button')}>   
                     <Button 
-                      onClick={handleOpen} 
+                      onClick={searchStays} 
                       variant="contained" 
                       size="large"
                       startIcon={<SearchIcon />}

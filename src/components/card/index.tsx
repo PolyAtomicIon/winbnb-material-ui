@@ -15,19 +15,19 @@ const CardContent = styled(MUICardContent)(() => ({
   },
 }) );
 
-export default function Card({hotel}:any) {
+export default function Card({stay}:any) {
 
   const cnCard = block('card');
 
   const beds =  (
-                  hotel?.beds 
-                    ? '. ' + hotel?.beds + (hotel.beds == 1 ? ' bed' : ' beds')
+                  stay?.beds 
+                    ? '. ' + stay?.beds + (stay.beds == 1 ? ' bed' : ' beds')
                     : ''
                 );
-  const roomType = hotel?.type + beds;
+  const roomType = stay?.type + beds;
 
   const maxTitleLength = 48;
-  const shortTitle = hotel.title.length > maxTitleLength ? hotel.title.substring(0, maxTitleLength) + "..." : hotel.title;
+  const shortTitle = stay.title.length > maxTitleLength ? stay.title.substring(0, maxTitleLength) + "..." : stay.title;
 
   return (
       <MUICard  
@@ -40,7 +40,7 @@ export default function Card({hotel}:any) {
         <CardMedia
           component="img"
           classes={{root: cnCard('image')}}
-          src={hotel.photo}
+          src={stay.photo}
           alt="room photo"
         />
         <CardContent
@@ -55,7 +55,7 @@ export default function Card({hotel}:any) {
               variant="body1"
             >
               {
-                hotel.superHost &&
+                stay.superHost &&
                   <span 
                     className={cnCard('super-host')}
                   >
@@ -75,7 +75,7 @@ export default function Card({hotel}:any) {
                 color="primary"
                 fontSize="small"
               ></StarIcon> 
-              {hotel.rating}
+              {stay.rating}
             </Typography>
           </div>  
           

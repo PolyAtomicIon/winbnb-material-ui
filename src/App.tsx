@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { ActiveControlContext } from './context/ActiveControlContext';
 import { LocationContext, ILocationContext } from "./context/LocationContext";
 import { GuestsContext } from "./context/GuestsContext";
-import hotelsData from './assets/stays.json';
+import staysData from './assets/stays.json';
 
 import './App.scss'
 
@@ -28,6 +28,29 @@ export default function App() {
   }
   const handleClose = () => setOpen(false);
 
+  const [stays, setStays] = useState([{}]);
+  const searchStays = () => {
+    const guests = adultGuests + childGuests; 
+
+    if( !location ) {
+      setStays(staysData.filter((stay) => (
+        stay.maxGuests >= guests
+      )) as any);
+      return;
+    };
+
+    const [country, city] = location.split(', ')
+
+    const filteredStays = staysData.filter((stay) => (
+      stay.country == country 
+        && stay.city == city 
+        && stay.maxGuests >= guests
+    )) as any;
+
+    setStays(filteredStays);
+    console.log(stays)
+  }
+
   return (
 
     <ActiveControlContext.Provider value={{activeControl, setActiveControl}}>
@@ -37,10 +60,11 @@ export default function App() {
 
           <Nav
             onButtonClick={handleOpen}
+            searchStays={searchStays}
           ></Nav>
           
           {
-            location &&
+            (stays.length && Object.keys(stays[0]).length !== 0) &&
               <>
                 <div className="header">
                   <Typography
@@ -51,7 +75,7 @@ export default function App() {
                   <Typography
                     variant="h3"
                   >
-                    {hotelsData.length + '+ stays'}
+                    {stays.length + '+ stays'}
                   </Typography>
                 </div>
 
@@ -60,7 +84,7 @@ export default function App() {
                   spacing={{ xs: 2, md: 3 }} 
                   columns={{ xs: 4, sm: 8, md: 12 }}
                 >
-                  {hotelsData.map((hotel, index) => (
+                  {stays.map((stay, index) => (
                     <Grid 
                       item 
                       xs={4} 
@@ -71,7 +95,7 @@ export default function App() {
                       justifyContent="center"
                     >
                       <Card 
-                        hotel={hotel}
+                        stay={stay}
                       />            
                     </Grid>
                   ))}
@@ -83,6 +107,7 @@ export default function App() {
             open={open}
             handleOpen={handleOpen}
             handleClose={handleClose}
+            searchStays={searchStays}
           ></Modal>
 
           <footer className="footer">
