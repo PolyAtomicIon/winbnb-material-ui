@@ -17,6 +17,7 @@ export default function App() {
 
   const [activeControl, setActiveControl] = useState('location');
   const [location, setLocation] = useState('');
+  const [currentLocation, setCurrentLocation] = useState('');
 
   const [adultGuests, setAdultGuests] = useState(0);
   const [childGuests, setChildGuests] = useState(0);
@@ -28,9 +29,10 @@ export default function App() {
   }
   const handleClose = () => setOpen(false);
 
-  const [stays, setStays] = useState([{}]);
+  const [stays, setStays] = useState(staysData);
   const searchStays = () => {
     const guests = adultGuests + childGuests; 
+    setCurrentLocation(location)
 
     if( !location ) {
       setStays(staysData.filter((stay) => (
@@ -70,7 +72,7 @@ export default function App() {
                   <Typography
                     variant="h1"
                   >
-                    Stays in {location}
+                    Stays in {currentLocation}
                   </Typography>
                   <Typography
                     variant="h3"
