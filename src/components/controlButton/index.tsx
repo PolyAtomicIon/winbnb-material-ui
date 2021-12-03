@@ -25,7 +25,9 @@ export const ControlButton: FC<ControlButtonProps> = ({
   const {location}:ILocationContext = useContext(LocationContext);
   const {adultGuests, childGuests}:IGuestsContext = useContext(GuestsContext);
 
-  const value = type === 'location' ? location : adultGuests + childGuests;
+  const value = type === 'location' 
+                            ? location 
+                            : adultGuests + childGuests + ' guests';
 
   useEffect(() => {
     if( type == activeControl )

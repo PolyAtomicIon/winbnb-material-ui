@@ -28,7 +28,7 @@ const LightButton = styled(Button)(() => ({
 
 const cnNav = block('nav');
 
-export default function Card(props: any) {
+export default function Nav(props: any) {
 
   const {location}:ILocationContext = useContext(LocationContext);
   const {adultGuests, childGuests}:IGuestsContext = useContext(GuestsContext);
@@ -58,17 +58,33 @@ export default function Card(props: any) {
         >
           {location ? location : 'Add location'}
         </Button>
-        <LightButton 
-          variant="outlined" 
-          size="medium"
-          onClick={() => props.onButtonClick('guests')}
-        >
-          {guests ? guests : 'Add Guests'}
-        </LightButton>
+        {
+          guests 
+            ? <Button 
+                variant="outlined" 
+                color="secondary"
+                size="medium"
+                sx={{
+                  fontWeight: 'normal',
+                  height: 55
+                }}
+                onClick={() => props.onButtonClick('guests')}
+              >
+                {guests + ' guests'}
+              </Button>
+            : <LightButton 
+                variant="outlined" 
+                size="medium"
+                onClick={() => props.onButtonClick('guests')}
+              >
+                Add Guests
+              </LightButton>
+        }
         <Button 
           variant="outlined"  
           size="medium"
-        >
+          onClick={() => props.searchStays()}
+          >
           <SearchIcon />
         </Button>
       </ButtonGroup>

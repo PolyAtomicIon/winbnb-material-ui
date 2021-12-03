@@ -1,0 +1,41 @@
+@import '../../customThemeVariables.scss';
+.guest-controller {
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @media screen and (max-width: $mobile) {
+        padding: 12px;
+    }
+    &__item {
+        gap: 10px;
+    }
+    &__counter {
+        &__main {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        &__button {
+            border: 1px solid $secondary;
+            background-color: transparent;
+            box-sizing: border-box;
+            border-radius: 4px;
+            height: 23px;
+            width: 23px;
+            &:hover {
+                background-color: $secondary-light;
+            }
+            &:active,
+            &:focus {
+                border-color: $primary;
+            }
+            &:disabled {
+                background-color: $secondary-light;
+                opacity: 0.4;
+            }
+        }
+    }
+}

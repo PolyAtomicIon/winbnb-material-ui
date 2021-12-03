@@ -5,10 +5,14 @@
     width: 100%;
     box-shadow: 24;
     padding: 90px;
+    padding-bottom: 45px;
     height: 460px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     @media screen and (max-width: $mobile) {
         padding: 12px;
+        height: 80vh;
     }
     &__controls {
         position: relative;
@@ -40,6 +44,20 @@
         }
     }
     &__location-control {
-        height: 250px;
+        overflow-y: scroll;
+        flex-grow: 1;
+        @media screen and (max-width: $mobile) {
+            margin-bottom: 64px;
+        }
+    }
+    &__search-button {
+        display: none;
+        @media screen and (max-width: $mobile) {
+            position: absolute;
+            bottom: 12px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
     }
 }

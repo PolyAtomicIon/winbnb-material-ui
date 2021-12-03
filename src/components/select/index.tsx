@@ -9,7 +9,7 @@ import block from 'bem-cn';
 import './select.scss';
 import { SelectItem } from './selectItem';
 
-export default function ControlledOpenSelect() {
+export default function ControlledOpenSelect({items}:any) {
 
   const cnSelect = block('select');
 
@@ -17,18 +17,15 @@ export default function ControlledOpenSelect() {
     <div 
         className={cnSelect()}
     >
-      <SelectItem
-        className={cnSelect('item')}
-        value="Helsinki"
-      ></SelectItem>
-      <SelectItem
-        className={cnSelect('item')}
-        value="12"
-      ></SelectItem>
-      <SelectItem
-        className={cnSelect('item')}
-        value="122"
-      ></SelectItem>
+      {
+        items.map((item:any, index:number) => (
+          <SelectItem
+            className={cnSelect('item')}
+            value={item}
+            key={index}
+          ></SelectItem>
+        ))
+      }
     </div>
   );
 }

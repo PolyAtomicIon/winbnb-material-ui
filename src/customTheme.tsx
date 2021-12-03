@@ -27,6 +27,10 @@ export default createTheme({
       fontSize: 24,
       fontWeight: 'bold'
     },
+    h2: {
+      fontSize: 14,
+      fontWeight: 'bold'
+    },
     h3: {
       fontSize: 14,
     },  
