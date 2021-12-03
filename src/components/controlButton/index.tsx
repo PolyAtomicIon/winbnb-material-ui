@@ -30,7 +30,7 @@ export const ControlButton: FC<ControlButtonProps> = ({
                             : adultGuests + childGuests + ' guests';
 
   useEffect(() => {
-    if( type == activeControl )
+    if( type === activeControl )
         controlRef?.current?.focus();
   })
 

@@ -21,7 +21,7 @@ export default function Card({stay}:any) {
 
   const beds =  (
                   stay?.beds 
-                    ? '. ' + stay?.beds + (stay.beds == 1 ? ' bed' : ' beds')
+                    ? '. ' + stay?.beds + (stay.beds === 1 ? ' bed' : ' beds')
                     : ''
                 );
   const roomType = stay?.type + beds;

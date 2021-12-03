@@ -85,7 +85,7 @@ export const Modal: FC<ModalProps> = ({
                   </Stack>
 
                   { 
-                    activeControlContext.activeControl == 'location' 
+                    activeControlContext.activeControl === 'location' 
                       ? <div className={cnModal('location-control')}>
                           <CustomSelect
                             items={places}

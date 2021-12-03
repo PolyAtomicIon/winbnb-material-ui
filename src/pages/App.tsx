@@ -1,15 +1,15 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import {Modal} from './components/modal';
-import Card from './components/card';
-import Nav from './components/nav';
+import {Modal} from '../components/modal';
+import Card from '../components/card';
+import Nav from '../components/nav';
 import { Grid } from '@mui/material';
 import { useState } from 'react';
-import { ActiveControlContext } from './context/ActiveControlContext';
-import { LocationContext, ILocationContext } from "./context/LocationContext";
-import { GuestsContext } from "./context/GuestsContext";
-import staysData from './assets/stays.json';
+import { ActiveControlContext } from '../context/ActiveControlContext';
+import { LocationContext } from "../context/LocationContext";
+import { GuestsContext } from "../context/GuestsContext";
+import staysData from '../assets/stays.json';
 
 import './App.scss'
 
@@ -44,8 +44,8 @@ export default function App() {
     const [country, city] = location.split(', ')
 
     const filteredStays = staysData.filter((stay) => (
-      stay.country == country 
-        && stay.city == city 
+      stay.country === country 
+        && stay.city === city 
         && stay.maxGuests >= guests
     )) as any;
 

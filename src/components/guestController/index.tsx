@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import block from 'bem-cn';
 import { Counter } from './counter';
 import { IGuestsContext, GuestsContext } from '../../context/GuestsContext';
@@ -14,7 +13,6 @@ export default function GuestController() {
     setAdultGuests, 
     setChildGuests
   }:IGuestsContext = React.useContext(GuestsContext);
-  const guests = adultGuests + childGuests;
   
   return (
     <div 

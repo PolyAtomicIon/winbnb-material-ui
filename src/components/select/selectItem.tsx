@@ -1,6 +1,6 @@
 import { useContext, FC } from 'react';
 import LocationIcon from '@mui/icons-material/LocationOn';
-import { SelectChangeEvent, Typography, MenuItem } from '@mui/material';
+import { Typography, MenuItem } from '@mui/material';
 import { ILocationContext, LocationContext } from '../../context/LocationContext';
 
 interface SelectItemProps {
@@ -13,7 +13,7 @@ export const SelectItem: FC<SelectItemProps> = ({
   value
 }) => {
 
-  const {location, setLocation}:ILocationContext = useContext(LocationContext);
+  const {setLocation}:ILocationContext = useContext(LocationContext);
 
   return (
     <MenuItem 

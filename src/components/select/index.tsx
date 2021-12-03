@@ -1,10 +1,3 @@
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Button from '@mui/material/Button';
-import LocationIcon from '@mui/icons-material/LocationOn';
 import block from 'bem-cn';
 import './select.scss';
 import { SelectItem } from './selectItem';

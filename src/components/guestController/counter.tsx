@@ -1,7 +1,5 @@
-import { useContext, FC, Dispatch, SetStateAction } from 'react';
-import LocationIcon from '@mui/icons-material/LocationOn';
-import { SelectChangeEvent, Typography, MenuItem } from '@mui/material';
-import { ILocationContext, LocationContext } from '../../context/LocationContext';
+import { FC, Dispatch, SetStateAction } from 'react';
+import { Typography } from '@mui/material';
 import block from 'bem-cn';
 
 interface CounterProps {
@@ -20,7 +18,6 @@ export const Counter: FC<CounterProps> = ({
   onClickFunction
 }) => {
 
-  // const {location, setLocation}:ILocationContext = useContext(LocationContext);
   const cnCounter = block('guest-controller__counter');
 
   return (
@@ -48,7 +45,7 @@ export const Counter: FC<CounterProps> = ({
       >
         <button
           className={cnCounter('button')}
-          disabled={value == 0}
+          disabled={value === 0}
           onClick={() => onClickFunction(value - 1)}
         >
           -
