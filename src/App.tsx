@@ -48,7 +48,7 @@ export default function App() {
     )) as any;
 
     setStays(filteredStays);
-    console.log(stays)
+    handleClose();
   }
 
   return (
